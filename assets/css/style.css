@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+:root {
+	--color-primary: #7380EC;
+  --color-danger: #FF7782;
+  --color-success: #41F1B6;
+  --color-warning: #FFBB55;
+  --color-white: #FFFFFF;
+  --color-info-dark: #7d8da1;
+  --color-info-light: #dce1eb;
+  --color-dark: #363949;
+  --color-light: rgba(132, 139, 200, 0.18);
+  --color-primary-variant: #111E88;
+  --color-dark-variant: #677483;
+  --color-background: #F6F6F9;
+
+  --card-border-radius: 2rem;
+  --border-radius-1: 0.4rem;
+  --border-radius-2: 0.8rem;
+  --border-radius-3: 1.2rem;
+
+  --card-padding: 1.8rem;
+  --padding-1: 1.2rem;
+
+  --box-shadow: 0 2rem 3rem var(--color-light);
+  --font-poppins: poppins, sans-serif;
+  --font-montserrat: montserrat, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0px;
+  padding: 0px;
+  appearance: none;
+  border: 0px;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: var(--font-montserrat);
+  font-size: 0.88rem;
+  background: var(--color-background);
+  user-select: none;
+  overflow-x: hidden;
+}
+
+.container {
+  background: #FFFFFF;
+  border-radius: 20px;
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 90vh;
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+
+.pmu-container {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 11in;
+  /* background-color: aqua; */
+  margin: 0px auto;
+}
+
+.pmu-card {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 11in;
+  height: 8.5in;
+}
+
+.pmu-card header nav {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+div.pmu-sumary {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 0 1 100%;
+  padding: 5px;
+  justify-content: space-between;
+}
+
+div.pmu-title {
+	color: #6a1a33;
+	border-left: 10px solid #6a1a33;
+	padding-left: 15px;
+}
+
+div.pmu-title h1 {
+  font-weight: lighter;
+  margin-top: 5px;
+  flex: 0 1 auto;
+}
+
+div.pmu-subtitle {
+  display: flex;
+  flex-flow: row nowrap;
+  flex: 0 1 auto;
+  justify-content: space-between;
+}
+
+
+div.pmu-subtitle h1, div.pmu-investment h1 {
+  font-size: 2rem;
+}
+
+div.pmu-subtitle p, div.pmu-investment p {
+  color: #AE7D43;
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+div.pmu-number-works h1 {
+  /* border: 1px solid #000000; */
+  border-radius: 50%;
+  text-align: center;
+  /* width: 25px; */
+  /* height: 25px; */
+}
+
+div.pmu-investment {
+  text-align: right;
+}
+
+div.pmu-images {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 5px;
+}
+
+div.pmu-images figure:last-child {
+  margin-left: 5px;
+}
+
+
+div.pmu-images figure img {
+  width: 18rem;
+  height: auto;
+  /* margin: 5px; */
+}
+
+div.pmu-images figure figcaption {
+	padding-left: 5px;
+	font-size: 0.8rem;
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+div.pmu-card section {
+  margin-top: 20px;
+  padding: 10px;
+  flex: 0 1 100%;
+}
+
+div.pmu-card section table {
+  margin: 0 auto;
+  width: 100%;
+}
+
+table thead {
+  background: #DFC9A4;
+}
+
+table tbody tr {
+  text-align: left;
+}
+
+table, th, td {
+  padding: 5px;
+  border: 1px dashed black;
+  border-collapse: collapse;
+}
+
+table, th, td ul li::before {
+  content: "• ";
+}
+
+div.pmu-container footer {
+	margin-top: 20px;
+	padding: 0px 10px;
+	border-bottom: 15px solid #DFC9A4;
+}
+
+div.pmu-container footer p#dynamic,
+div.pmu-container footer p.company {
+  font-weight: bolder;
+  margin-bottom: 5px;
+}
+
+div.pmu-container footer p#dynamic {
+  text-align: right;
+}
+
+
+div.pmu-menu {
+  /* background-color: #41F1B6; */
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+input#for-dynamic {
+	width: 30%;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: 1px solid #000;
+	border-radius: 30px;
+	padding-left: 20px;
+}
+
+/* CSS */
+.btn {
+  background-color: rgba(51, 51, 51, 0.05);
+  border-radius: 8px;
+  border-width: 0;
+  color: #333333;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}

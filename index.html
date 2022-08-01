@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<!-- META TAGS -->
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Material Icons CDN -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<!-- CSS STYLE -->
+	<link rel="stylesheet" href="./assets/css/style.css">
+
+	<!-- <style></style> -->
+
+	<title>DOYSP PDF</title>
+</head>
+<body>
+	<div class="container">
+		<div class="pmu-container">
+			<div id="pmu" class="pmu-card">
+				<header>
+					<nav>
+						<div class="pmu-sumary">
+							<div class="pmu-title">
+								<h3>PMU 2021</h3>
+								<h1>COMALCALCO</h1>
+							</div>
+							<div class="pmu-subtitle">
+								<div class="pmu-number-works">
+									<h1>3</h1>
+									<p>Obras</p>
+								</div>
+								<div class="pmu-investment">
+									<h1>$ 254,427,101.71</h1>
+									<p>Monto de inversión</p>
+								</div>
+							</div>
+						</div>
+						<div class="pmu-images">
+							<figure class="pmu-image">
+								<img src="./assets/images/img-01.jpg" alt="PMU 2021 Comalcalco">
+								<figcaption>
+									Descripción de imagen 01
+								</figcaption>
+							</figure>
+							<figure class="pmu-image">
+								<img src="./assets/images/img-02.jpg" alt="PMU 2021 Comalcalco">
+								<figcaption>
+									Descripción de imagen 02
+								</figcaption>
+							</figure>
+						</div>
+					</nav>
+
+				</header>
+				<section>
+					<table id="pmu-table">
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>PCA</th>
+								<th>OBRA</th>
+								<th>FECHA ESTIMADA</th>
+								<th>ESTATUS</th>
+								<th>OBSERVACIONES</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>PCA-27005EP001</td>
+								<td>Renovación de Plaza Municipal y calles aledañas $34,185,443.63</td>
+								<td>2022-sept-22</td>
+								<td>ENTREGADA</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>PCA-27005EP005</td>
+								<td>Construcción de Centro de Desarrollo Comunitario y parque Tomás Garrido $55,312,529.49</td>
+								<td>2022-ene-31</td>
+								<td>ENTREGADA</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>PCA-27005EP003</td>
+								<td>Construcción de Mercado de Abasto</td>
+								<td>2022-jul-31</td>
+								<td>EN PROCESO 94.51%</td>
+								<td>
+									<ul>
+										<li>Cortinas Metálicas (70).</li>
+										<li>Vegetación Del Área Exterior</li>
+										<li>Uvie y liberación (25 julio)</li>
+										<li>Colocación De Muebles De Baño (falta 1 módulo) </li>
+										<li>Instalación Eléctrica</li>
+										<li>El municipio realizará obras complementarias (Elevador de carga, en locales comerciales exteriores instalación eléctrica)</li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<footer>
+					<p id="dynamic"></p>
+					<p class="company">GRUPO ZOHMEX, S.A. DE C.V</p>
+					<p>Actualizado al: 8 de julio de 2022 por Arq. Efrén Baruch Peña Fuentes- Residente de Obra SEDATU.</p>
+				</footer>
+			</div>
+			<div class="pmu-menu">
+				<input id="for-dynamic" type="text" placeholder="Escribe algo...">
+				<div class="button">
+					<button class="btn" type="button">
+						<span class="material-icons">keyboard_arrow_left</span>
+					</button>
+					<button class="btn" type="button">
+						<span class="material-icons">keyboard_arrow_right</span>
+					</button>
+					<button id="btn-print" class="btn" type="button">
+						<span class="material-icons">print</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js" integrity="sha512-SgWewGM3r8xXm8LNXt4ZHqKVKu/7eKrJ1aBCbMaX44xXXaCcIvCAvD2kj9qnC1lhyjAu04mcPiTzcc/CaACnUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<!-- <script src="/assets/js/index.js" type="module"></script> -->
+	<script>
+		const btn = document.getElementById('btn-print');
+		const dynamic = document.getElementById('dynamic');
+		const input = document.getElementById('for-dynamic');
+		const pmu = document.querySelector('.pmu-card');
+		const data = {
+			titles: {
+        year: 'PMU 2021',
+        municipality: 'COMALCALCO',
+			},
+    	subttitle: {
+        works: '3',
+        investment: '$ 254,427,101.71'
+    	},
+    	figures: {
+      	figures01: {
+        	url: './assets/images/img-01.jpg',
+          caption: 'Descripción de imagen 01'
+        },
+        figures01: {
+          url: './assets/images/img-02.jpg',
+          caption: 'Descripción de imagen 02'
+        },
+			},
+			company: 'GRUPO ZOHMEX, S.A. DE C.V',
+      update: 'Actualizado al: 8 de julio de 2022 por Arq. Efrén Baruch Peña Fuentes- Residente de Obra SEDATU.',
+      dynamic: "Un dato dinámico"
+		}
+
+		const createTimestamp = () => {
+			const parts = new Date()
+				.toISOString()
+				.replace(/[.:T]/g, '-')
+				.replace(/Z/g,'')
+				.split('-');
+			const [YY, MM, DD, hh, mm, ss, ms] = parts;
+			return `${YY}.${MM}.${DD}.${hh}.${mm}.${ss}.${ms}`;
+		}
+
+		const createPDF = (d) => {
+			const { jsPDF } = window.jspdf;
+			console.log('Creando PDF');
+			const doc = new jsPDF({
+				orientation: 'landscape',
+				unit: 'in',
+				format: 'letter',
+				putOnlyUsedFonts: true,
+				floatPrecision: 'smart' // or "smart", default is 16
+			});
+
+			doc.setProperties({
+				title: 'Title',
+				subject: 'This is the subject',
+				author: 'James Hall',
+				keywords: 'generated, javascript, web 2.0, ajax',
+				creator: 'MEEE'
+			});
+
+			// HEADER
+			// RECTRANGLE
+			doc.setDrawColor(106, 26, 51);
+			doc.setFillColor(106, 26, 51);
+			doc.rect(0.45, 0.45, 0.025, 0.5, 'FD');
+
+			// YEAR
+			doc.setFontSize(14);
+			doc.setTextColor(106, 26, 51);
+			doc.text(0.7, 0.5, data.titles.year);
+
+			// municipality
+			doc.setFontSize(18);
+			doc.setTextColor(106, 26, 51);
+			doc.text(0.7, 1, data.titles.municipality);
+
+			// works
+			doc.setFontSize(20);
+			doc.setTextColor(0, 0, 0);
+			doc.text(0.35, 1.8, data.subttitle.works);
+
+			// investment
+			doc.setFontSize(20);
+			doc.setTextColor(0, 0, 0);
+			doc.text(4.35, 1.8, data.subttitle.investment, { align: 'right' });
+
+			// works label
+			doc.setFontSize(20);
+			doc.setTextColor(174, 125, 67);
+			doc.text(0.35, 2.2, 'Obras');
+
+			// investment label
+			doc.setFontSize(20);
+			doc.setTextColor(174, 125, 67);
+			doc.text(4.35, 2.2, 'Monto de inversión', { align: 'right' });
+
+			// FOOTER
+			// RECTRANGLE
+			doc.setDrawColor(223, 201, 164);
+			doc.setFillColor(223, 201, 164);
+			doc.rect(0, 8.3, 11, 0.125, 'FD');
+
+			// company
+			doc.setFontSize(14);
+			doc.setTextColor(0, 0, 0);
+			doc.text(0.1, 8.4, data.dynamic);
+
+			// company
+			doc.setFontSize(14);
+			doc.setTextColor(0, 0, 0);
+			// doc.setFontStyle('bold');
+			doc.text(0.1, 7.8, data.company);
+
+			// update
+			doc.setFontSize(12);
+			doc.setTextColor(0, 0, 0);
+			doc.text(0.1, 8.15, data.update);
+
+
+    	doc.autoTable({
+    		html: '#pmu-table',
+    		tableWidth: 'wrap',
+				startY: 3,
+				startX: 1.1,
+    		styles: { cellPadding: 0.5, fontSize: 8 },
+				columnStyles: { text: { cellWidth: 'auto' } },
+    	})
+			// return doc.output('datauri');
+			return doc.save('datauri');
+		};
+
+		const ready = () => {
+			console.log('Works...');
+			dynamic.textContent = data.dynamic;
+			input.addEventListener('input', e => {
+				data.dynamic = e.target.value;
+				dynamic.textContent = data.dynamic;
+			});
+			btn.addEventListener('click', () => { createPDF(data) });
+		}
+		document.addEventListener('DOMContentLoaded', ready, false);
+
+	</script>
+</body>
+</html>
